@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <title>Hasil Screening TBC</title>
+    <style>
+      body {
+        background: linear-gradient(135deg, #0066cc, #00cc99);
+        color: white;
+        font-family: Arial, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .container {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        padding: 20px;
+        max-width: 700px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        color: #00306e;
+      }
+
+      .typing {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 3px solid #00306e;
+        animation: typing 2.5s steps(30, end), blink 0.6s step-end infinite;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: #00306e;
+        }
+      }
+
+      /* Animasi untuk hasil */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .alert {
+        animation: fadeIn 1s ease-in-out;
+        margin-bottom: 15px;
+      }
+
+      .btn-secondary {
+        background-color: #0066cc;
+        border: none;
+      }
+
+      .btn-secondary:hover {
+        background-color: #004999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>
+        <span class="typing">Hasil Screening TBC</span>
+      </h2>
+      <div id="result"></div>
+      <div id="recommendation" class="mt-4"></div>
+      <div class="text-center mt-4">
+        <a href="index.html" class="btn btn-secondary">Kembali ke Beranda</a>
+      </div>
+    </div>
+
+    <script>
+      const questions = [
+        "Apakah Anda merasa batuk lebih dari 3 minggu?",
+        "Apakah Anda mengalami penurunan berat badan yang tidak dapat dijelaskan?",
+        "Apakah Anda sering berkeringat di malam hari?",
+        "Apakah Anda merasa lelah tanpa sebab yang jelas?",
+        "Apakah Anda mengalami nyeri dada?",
+        "Apakah Anda pernah terpapar orang yang terinfeksi TBC?",
+        "Apakah Anda memiliki riwayat TBC sebelumnya?",
+        "Apakah Anda mengalami kesulitan bernapas?",
+        "Apakah Anda memiliki demam yang tidak kunjung sembuh?",
+        "Apakah Anda merokok atau memiliki riwayat merokok?",
+      ];
+
+      const answers = JSON.parse(localStorage.getItem("screeningAnswers"));
+      const resultContainer = document.getElementById("result");
+      const recommendationContainer = document.getElementById("recommendation");
+
+      if (answers) {
+        questions.forEach((question, index) => {
+          resultContainer.innerHTML += `
+            <div class="alert alert-info">
+              <strong>${question}</strong><br />
+              Jawaban Anda: <strong>${answers[index]}</strong>
+            </div>
+          `;
+        });
+
+        // Rekomendasi berdasarkan jawaban
+        const yesAnswers = answers.filter((answer) => answer === "Ya").length;
+
+        if (yesAnswers >= 3) {
+          recommendationContainer.innerHTML = `
+            <div class="alert alert-danger">
+              <strong>Penting!</strong> Berdasarkan jawaban Anda, kami menyarankan Anda untuk segera berkonsultasi dengan dokter untuk pemeriksaan lebih lanjut.
+            </div>
+          `;
+        } else {
+          recommendationContainer.innerHTML = `
+            <div class="alert alert-success">
+              <strong>Rekomendasi:</strong> Anda tampaknya tidak menunjukkan gejala yang mengkhawatirkan. Namun, tetaplah menjaga pola hidup sehat dengan makan bergizi, cukup tidur, dan berolahraga secara teratur.
+            </div>
+          `;
+        }
+      } else {
+        resultContainer.innerHTML =
+          '<p class="alert alert-warning">Tidak ada hasil screening yang ditemukan.</p>';
+      }
+    </script>
+  </body>
+</html>

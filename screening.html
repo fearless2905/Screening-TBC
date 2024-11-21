@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <title>Screening TBC</title>
+    <style>
+      body {
+        background: linear-gradient(135deg, #0066cc, #00cc99);
+        color: white;
+        font-family: Arial, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .container {
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.2
+        ); /* Set container with transparent background */
+        backdrop-filter: blur(8px); /* Apply blur effect on the background */
+        border-radius: 10px;
+        padding: 20px;
+        max-width: 700px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+        color: #00306e;
+      }
+
+      .typing {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 3px solid #00306e;
+        animation: typing 2.5s steps(30, end), blink 0.6s step-end infinite;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: #00306e;
+        }
+      }
+
+      .btn-primary {
+        background-color: #0066cc;
+        border: none;
+      }
+
+      .btn-primary:hover {
+        background-color: #004999;
+      }
+
+      .guidance {
+        margin-top: 20px;
+        font-style: italic;
+        text-align: center;
+        color: #00306e;
+      }
+
+      .question-label {
+        font-weight: bold;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>
+        <span class="typing">Screening Gejala TBC</span>
+      </h2>
+      <div class="guidance">
+        <p>
+          Panduan: Silakan jawab setiap pertanyaan dengan memilih "Ya" atau
+          "Tidak". Jawaban Anda akan digunakan untuk memberikan rekomendasi
+          lebih lanjut mengenai pemeriksaan kesehatan Anda.
+        </p>
+      </div>
+
+      <form id="screeningForm" class="mt-4">
+        <div class="form-group">
+          <label class="question-label"
+            >1. Apakah Anda merasa batuk lebih dari 3 minggu?</label
+          >
+          <select class="form-control" name="answer1" required>
+            <option value="">Pilih Jawaban</option>
+            <option value="Ya">Ya</option>
+            <option value="Tidak">Tidak</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="question-label"
+            >2. Apakah Anda mengalami penurunan berat badan yang tidak dapat
+            dijelaskan?</label
+          >
+          <select class="form-control" name="answer2" required>
+            <option value="">Pilih Jawaban</option>
+            <option value="Ya">Ya</option>
+            <option value="Tidak">Tidak</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="question-label"
+            >3. Apakah Anda sering berkeringat di malam hari?</label
+          >
+          <select class="form-control" name="answer3" required>
+            <option value="">Pilih Jawaban</option>
+            <option value="Ya">Ya</option>
+            <option value="Tidak">Tidak</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="question-label"
+            >4. Apakah Anda merasa lelah tanpa sebab yang jelas?</label
+          >
+          <select class="form-control" name="answer4" required>
+            <option value="">Pilih Jawaban</option>
+            <option value="Ya">Ya</option>
+            <option value="Tidak">Tidak</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="question-label"
+            >5. Apakah Anda mengalami nyeri dada?</label
+          >
+          <select class="form-control" name="answer5" required>
+            <option value="">Pilih Jawaban</option>
+            <option value="Ya">Ya</option>
+            <option value="Tidak">Tidak</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="question-label"
+            >6. Apakah Anda pernah terpapar orang yang terinfeksi TBC?</label
+          >
+          <select class="form-control" name="answer6" required>
+            <option value="">Pilih Jawaban</option>
+            <option value="Ya">Ya</option>
+            <option value="Tidak">Tidak</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="question-label"
+            >7. Apakah Anda memiliki riwayat TBC sebelumnya?</label
+          >
+          <select class="form-control" name="answer7" required>
+            <option value="">Pilih Jawaban</option>
+            <option value="Ya">Ya</option>
+            <option value="Tidak">Tidak</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="question-label"
+            >8. Apakah Anda mengalami kesulitan bernapas?</label
+          >
+          <select class="form-control" name="answer8" required>
+            <option value="">Pilih Jawaban</option>
+            <option value="Ya">Ya</option>
+            <option value="Tidak">Tidak</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="question-label"
+            >9. Apakah Anda memiliki demam yang tidak kunjung sembuh?</label
+          >
+          <select class="form-control" name="answer9" required>
+            <option value="">Pilih Jawaban</option>
+            <option value="Ya">Ya</option>
+            <option value="Tidak">Tidak</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="question-label"
+            >10. Apakah Anda merokok atau memiliki riwayat merokok?</label
+          >
+          <select class="form-control" name="answer10" required>
+            <option value="">Pilih Jawaban</option>
+            <option value="Ya">Ya</option>
+            <option value="Tidak">Tidak</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mt-3">
+          Submit Jawaban
+        </button>
+      </form>
+    </div>
+
+    <script>
+      const screeningForm = document.getElementById("screeningForm");
+
+      screeningForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        // Ambil semua jawaban dari form
+        const formData = new FormData(screeningForm);
+        const answers = [];
+        for (let [key, value] of formData.entries()) {
+          answers.push(value);
+        }
+
+        // Simpan jawaban ke localStorage
+        localStorage.setItem("screeningAnswers", JSON.stringify(answers));
+
+        // Redirect ke halaman hasil
+        window.location.href = "result.html";
+      });
+    </script>
+  </body>
+</html>
